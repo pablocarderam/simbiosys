@@ -1,0 +1,151 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>SimBioSys</title>
+		<link rel="shortcut icon" href="{{ url_for('static', filename='assets/favicon1.ico') }}">
+
+		<link rel="stylesheet" href="static/css/style.css">
+		<script src="static/js/main.js"></script>
+		<script src="static/js/EPPZScroll.js"></script>
+		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	</head>
+
+	<body onload="init()" onscroll="scrollEvt()">
+		<label class="roundBtn hidden" id="backToTopBtn" onclick="EPPZScrollTo.scrollVerticalToElementById('Title', 0)">
+			<span id="upBtn">^</span></label>
+
+		<div class="headTitle" id="Title" onclick="EPPZScrollTo.scrollVerticalToElementById('controls', 50)">
+				<img src="static/assets/logo_symbiosis.png" width="600px">
+		</div>
+
+		<!--div class="headTitle" id="Title2" onclick="EPPZScrollTo.scrollVerticalToElementById('controls', 50)">
+			<span id="titLeft">sim</span><span id="titRight">bio</span><span id="titLeft">sys</span>
+		</div-->
+
+		<div class="mainText">
+			<p>
+          Description lalala lalalalalala lalalalalalalalala lalalalalala lalala
+					lalalala lalalalala lalala lalala lalala lalala
+      </p>
+      <p>
+          lalala lalala lalala lalala
+			</p>
+		</div>
+
+		<div id="App" class="app" onload="init()">
+			<script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.16/socket.io.min.js"></script>
+			<!--FALLBACK SOCKET.IO LOCAL <script type="text/javascript" src="static/js/socket.io.min.js"></script> -->
+			<script src="static/js/socketHandler.js"></script>
+			<!--script src="static/js/app.js"></script-->
+
+			<p>
+				Lalala
+				<a href="" class="tooltip" target="_blank"
+					tipTxt="More lalalala.">
+					lalala</a>
+				lalalalalala
+			</p>
+
+			<p>
+
+			</p>
+
+			<div class="blockDiv">
+				<div class="column-left" id="controls">
+					<label class="head">Variables:</label><br><br>
+					<div id="vars">
+						<span><input class="txtInput" type="text" value="x" onchange=onChangeVarConst()> = <input class="txtInput" type="text" value="3"></span><br>
+					</div>
+					<label class="roundBtnNormal" id="moreVarBtn" onclick="addVar()">+</label>
+				</div>
+				<div class="column-right">
+					<label class="head">Constants:</label><br><br>
+					<div id="consts">
+						<span><input class="txtInput" type="text" value="a" onchange=onChangeVarConst()> = <input class="txtInput" type="text" value="0"></span><br>
+					</div>
+					<label class="roundBtnNormal" id="moreConstBtn" onclick="addConst()">+</label>
+				</div>
+			</div>
+
+			<div>
+				<p>
+					<label class="head">Equations:</label>
+				</p>
+
+				<div class="small txtPanel">
+						<textarea class="txtInputEq" id="eqTxt">
+# Write your equations here like this:
+
+x = -3*x  +a +1/b
+y = -3*y  -1/b
+
+# TIPS:
+# Use +, -, *, /, ^, log, ln and () symbols.
+# Use * for constant and variable multiplication.
+# Avoid {, }, @, ! characters.
+# Use # at the start of a line to insert comments.
+#
+# In order for Gillespie simulations to work properly,
+# write terms for corresponding events in different equations
+# in the same order, for example:
+# x = event_1 + event_2 - event3
+# y = -event_1 - event_2 + event3
+
+	</textarea>
+				</div>
+				<p>
+					<label class="head">Event Burst Sizes:</label>
+				</p>
+				<div class="small txtPanel">
+						<textarea class="txtInputEq" id="evtTxt">
+# Write the burst size of each event here.
+# For example, for the above equations, you might write
+
+1,0,-1
+2,-2
+
+# TIPS:
+# Separate each burst size with a comma for events in the same equation.
+# Separate each set of burst sizes with a new line for each equation.
+# Use # at the start of a line to insert comments.
+
+	</textarea>
+				</div>
+			</div>
+
+			<p class="small">
+					Max Simulation Time (s) <input type="number" id="simTime" value="1500"></p><p class="small">
+					Runge-Kutta time step (s) <input type="number" id="timeStep" value="0.2">
+			</p>
+
+			<p>
+				<label class="runBtn" id="example" onclick="showExample()">Load example</label>
+				<label class="runBtn" id="run" onclick="runSim()">Simulate!</label>
+			</p>
+
+			<label class="head">Graphs:</label>
+			<div class="small txtPanel" id="graphsPanel">
+				<div id="chart_div"></div>
+			</div>
+
+
+		</div>
+
+		<div class="bottom" id="bottom">
+			<br><br>
+	    <p>
+	        All other code: <a href="http://opensource.org/licenses/MIT" target="_blank">
+					MIT License</a>.
+				<br>
+				<a href="https://github.com/mneira011/SynthBioEqsSolver/tree/master/simbiosysv1.0" target="_blank">
+					GitHub src here.</a>
+	            <br>
+	            Developed by the Uniandes Synthetic Biology Team
+	            <br>
+	            <a href="mailto:synbiouniandes@gmail.com?Subject=Hi%20there" target="_top" class="pcr">
+					synbiouniandes@gmail.com</a>
+			</p>
+		</div>
+	</body>
+</html>
